@@ -71,9 +71,10 @@ namespace compUpload.Controllers
                         containerClient = blobServiceClient.GetBlobContainerClient(containerName);
                 }
                 BlobClient blobClient = containerClient.GetBlobClient(blobName);
-                using Stream uploadFileStream = model.FileToUpload.OpenReadStream();
-                await blobClient.UploadAsync(uploadFileStream, true);
-                model.FileToUpload.OpenReadStream().Close();
+                using (Stream uploadFileStream = model.FileToUpload.OpenReadStream())
+                {
+                    await blobClient.UploadAsync(uploadFileStream, true);
+                }
         }
 
         //https://blog.filestack.com/thoughts-and-knowledge/complete-list-audio-video-file-formats/
