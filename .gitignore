@@ -1,0 +1,8 @@
+bin
+obj
+.vscode
+Properties
+__blobstorage__
+__azurite_db_blob__.json
+__azurite_db_blob_extent__.json
+.DS_Store
